@@ -1,6 +1,6 @@
-$(function (){
+$(function () {
     // 切换搜索框
-    (function (){
+    (function () {
         var aLi = $('#menu li');
         var oText = $('#search').find('.form .text');
         var arrText = [
@@ -14,8 +14,8 @@ $(function (){
 
         oText.val(arrText[iNow]);
 
-        aLi.each(function ( index ){
-            $(this).click(function (){
+        aLi.each(function (index) {
+            $(this).click(function () {
                 aLi.attr('class', 'gradient');
                 $(this).attr('class', 'active');
 
@@ -25,32 +25,32 @@ $(function (){
             });
         });
 
-        oText.focus(function (){
-            if( $(this).val() == arrText[iNow] ) {
+        oText.focus(function () {
+            if ($(this).val() == arrText[iNow]) {
                 $(this).val('');
             }
         });
-        oText.blur(function (){
-            if( $(this).val() == '' ) {
+        oText.blur(function () {
+            if ($(this).val() == '') {
                 oText.val(arrText[iNow]);
             }
         });
     })();
 
     // update文字弹性滑动
-    (function (){
+    (function () {
         var oDiv = $('.update');
         var oUl = oDiv.find('ul');
         var iH = 0;
         var arrData = [
-            { 'name':'萱萱', 'time':4, 'title':'那些灿烂华美的瞬间' },
-            { 'name':'畅畅', 'time':5, 'title':'广东3天抓获涉黄疑犯' },
-            { 'name':'萱萱', 'time':6, 'title':'国台办回应王郁琦' },
-            { 'name':'畅畅', 'time':7, 'title':'那些灿烂华美的瞬间' },
-            { 'name':'萱萱', 'time':8, 'title':'那些灿烂华美的瞬间' },
-            { 'name':'畅畅', 'time':9, 'title':'广东3天抓获涉黄疑犯' },
-            { 'name':'萱萱', 'time':10, 'title':'国台办回应王郁琦' },
-            { 'name':'畅畅', 'time':11, 'title':'那些灿烂华美的瞬间' }
+            {'name': '萱萱', 'time': 4, 'title': '那些灿烂华美的瞬间'},
+            {'name': '畅畅', 'time': 5, 'title': '广东3天抓获涉黄疑犯'},
+            {'name': '萱萱', 'time': 6, 'title': '国台办回应王郁琦'},
+            {'name': '畅畅', 'time': 7, 'title': '那些灿烂华美的瞬间'},
+            {'name': '萱萱', 'time': 8, 'title': '那些灿烂华美的瞬间'},
+            {'name': '畅畅', 'time': 9, 'title': '广东3天抓获涉黄疑犯'},
+            {'name': '萱萱', 'time': 10, 'title': '国台办回应王郁琦'},
+            {'name': '畅畅', 'time': 11, 'title': '那些灿烂华美的瞬间'}
         ];
         var str = '';
         var oBtnUp = $('#updateUpBtn');
@@ -58,22 +58,22 @@ $(function (){
         var iNow = 0;
         var timer = null;
 
-        for ( var i=0; i<arrData.length; i++ ) {
-            str += '<li><a href="'+ arrData[i].url +'"><strong>'+ arrData[i].name +'</strong> <span>'+ arrData[i].time +'分钟前</span> 写了一篇新文章：'+ arrData[i].title +'…</a></li>';
+        for (var i = 0; i < arrData.length; i++) {
+            str += '<li><a href="' + arrData[i].url + '"><strong>' + arrData[i].name + '</strong> <span>' + arrData[i].time + '分钟前</span> 写了一篇新文章：' + arrData[i].title + '…</a></li>';
         }
-        oUl.html( str );
+        oUl.html(str);
 
         iH = oUl.find('li').height();
 
-        oBtnUp.click(function (){
+        oBtnUp.click(function () {
             doMove(-1);
         });
-        oBtnDown.click(function (){
+        oBtnDown.click(function () {
             doMove(1);
         });
 
-        oDiv.hover(function (){
-            clearInterval( timer );
+        oDiv.hover(function () {
+            clearInterval(timer);
         }, autoPlay);
 
         function autoPlay() {
@@ -81,41 +81,42 @@ $(function (){
                 doMove(-1);
             }, 3500);
         }
+
         autoPlay();
 
-        function doMove( num ) {
+        function doMove(num) {
             iNow += num;
-            if ( Math.abs(iNow) > arrData.length-1 ) {
+            if (Math.abs(iNow) > arrData.length - 1) {
                 iNow = 0;
             }
-            if ( iNow > 0 ) {
-                iNow = -(arrData.length-1);
+            if (iNow > 0) {
+                iNow = -(arrData.length - 1);
             }
-            oUl.stop().animate({ 'top': iH*iNow }, 2200, 'elasticOut');
+            oUl.stop().animate({'top': iH * iNow}, 2200, 'elasticOut');
         }
     })();
 
     // options 选项卡切换
-    (function (){
+    (function () {
 
-        fnTab( $('.tabNav1'), $('.tabCon1'), 'click' );
-        fnTab( $('.tabNav2'), $('.tabCon2'), 'click' );
-        fnTab( $('.tabNav3'), $('.tabCon3'), 'mouseover' );
-        fnTab( $('.tabNav4'), $('.tabCon4'), 'mouseover' );
+        fnTab($('.tabNav1'), $('.tabCon1'), 'click');
+        fnTab($('.tabNav2'), $('.tabCon2'), 'click');
+        fnTab($('.tabNav3'), $('.tabCon3'), 'mouseover');
+        fnTab($('.tabNav4'), $('.tabCon4'), 'mouseover');
 
-        function fnTab( oNav, aCon, sEvent ) {
+        function fnTab(oNav, aCon, sEvent) {
             var aElem = oNav.children();
             aCon.hide().eq(0).show();
 
-            aElem.each(function (index){
+            aElem.each(function (index) {
 
-                $(this).on(sEvent, function (){
+                $(this).on(sEvent, function () {
                     aElem.removeClass('active').addClass('gradient');
                     $(this).removeClass('gradient').addClass('active');
                     aElem.find('a').attr('class', 'triangle_down_gray');
                     $(this).find('a').attr('class', 'triangle_down_red');
 
-                    aCon.hide().eq( index ).show();
+                    aCon.hide().eq(index).show();
                 });
 
             });
@@ -123,35 +124,38 @@ $(function (){
     })();
 
     // 自动播放的焦点图
-    (function (){
+    (function () {
         var oDiv = $('#fade');
         var aUlLi = oDiv.find('ul li');
         var aOlLi = oDiv.find('ol li');
         var oP = oDiv.find('p');
-        var arr = [ '爸爸去哪儿啦~', '人像摄影中的光影感', '娇柔妩媚、美艳大方' ];
+        var arr = ['爸爸去哪儿啦~', '人像摄影中的光影感', '娇柔妩媚、美艳大方'];
         var iNow = 0;
         var timer = null;
 
         fnFade();
 
-        aOlLi.click(function (){
+        aOlLi.click(function () {
             iNow = $(this).index();
             fnFade();
         });
-        oDiv.hover(function (){ clearInterval(timer); }, autoPlay);
+        oDiv.hover(function () {
+            clearInterval(timer);
+        }, autoPlay);
 
         function autoPlay() {
             timer = setInterval(function () {
                 iNow++;
-                iNow%=arr.length;
+                iNow %= arr.length;
                 fnFade();
             }, 2000);
         }
+
         autoPlay();
 
         function fnFade() {
-            aUlLi.each(function (i){
-                if ( i != iNow ) {
+            aUlLi.each(function (i) {
+                if (i != iNow) {
                     aUlLi.eq(i).fadeOut().css('zIndex', 1);
                     aOlLi.eq(i).removeClass('active');
 
@@ -165,7 +169,7 @@ $(function (){
     })();
 
     //日历提示说明
-    (function (){
+    (function () {
         var aSpan = $('.calendar h3 span');
         var aImg = $('.calendar .img');
         var oPrompt = $('.today_info');
@@ -173,33 +177,33 @@ $(function (){
         var oStrong = oPrompt.find('strong');
         var oP = oPrompt.find('p');
 
-        aImg.hover(function (){
+        aImg.hover(function () {
             var iTop = $(this).parent().position().top - 30;
             var iLeft = $(this).parent().position().left + 55;
-            var index = $(this).parent().index()%aSpan.size();
+            var index = $(this).parent().index() % aSpan.size();
 
             // console.log( $(this).parent().index()%aSpan.size() );
 
-            oPrompt.show().css({ 'left': iLeft, 'top': iTop });
+            oPrompt.show().css({'left': iLeft, 'top': iTop});
             oP.text($(this).attr('info'));
             oImg.attr('src', $(this).attr('src'));
-            oStrong.text( aSpan.eq(index).text() );
+            oStrong.text(aSpan.eq(index).text());
 
 
-        }, function (){
+        }, function () {
             oPrompt.hide();
         });
     })();
 
     // BBS高亮显示
-    (function (){
-        $('.bbs ol li').mouseover(function (){
+    (function () {
+        $('.bbs ol li').mouseover(function () {
             $('.bbs ol li').removeClass('active').eq($(this).index()).addClass('active');
         });
     })();
 
     // HOT鼠标提示效果
-    (function (){
+    (function () {
         var arr = [
             '',
             '用户1<br />人气1',
@@ -213,13 +217,13 @@ $(function (){
             '用户9<br />人气9',
             '用户10<br />人气10'
         ];
-        $('.hot_area li').mouseover(function (){
+        $('.hot_area li').mouseover(function () {
 
-            if ( $(this).index() == 0 ) return;
+            if ($(this).index() == 0) return;
 
             $('.hot_area li p').remove();
 
-            $(this).append('<p style="width:'+ ($(this).width()-12) +'px; height:'+ ($(this).height()-12) +'px;">'+ arr[$(this).index()] +'</p>');
+            $(this).append('<p style="width:' + ($(this).width() - 12) + 'px; height:' + ($(this).height() - 12) + 'px;">' + arr[$(this).index()] + '</p>');
         });
     })();
 });

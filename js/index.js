@@ -59,7 +59,8 @@ $(function () {
         var timer = null;
 
         for (var i = 0; i < arrData.length; i++) {
-            str += '<li><a href="' + arrData[i].url + '"><strong>' + arrData[i].name + '</strong> <span>' + arrData[i].time + '分钟前</span> 写了一篇新文章：' + arrData[i].title + '…</a></li>';
+            // str += '<li><a href="' + arrData[i].url + '"><strong>' + arrData[i].name + '</strong> <span>' + arrData[i].time + '分钟前</span> 写了一篇新文章：' + arrData[i].title + '…</a></li>';
+            str += `<li><a href="${arrData[i].url}"> <strong>${arrData[i].name} </strong><span>${arrData[i].time} 分钟前 </span>写了一篇新文章：${arrData[i].title}...</a></li>`
         }
         oUl.html(str);
 

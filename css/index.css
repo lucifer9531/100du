@@ -4,7 +4,7 @@ body, h1, h2, h3, h4, h5, p, dl, dd, ul, ol, form, input, textarea, th, td, sele
     margin: 0;
     padding: 0;
 }
-body,h1,
+
 em {
     font-style: normal;
 }
@@ -12,7 +12,6 @@ em {
 li {
     list-style: none;
 }
-
 
 a {
     text-decoration: none;
@@ -567,6 +566,7 @@ body {
     top: 17px;
     right: 0;
 }
+
 
 .video_title {
     height: 42px;
